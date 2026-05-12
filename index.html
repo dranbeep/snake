@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="game-shell" aria-label="贪吃蛇游戏">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Snake Arcade</p>
+            <h1>贪吃蛇</h1>
+          </div>
+          <div class="stats" aria-label="游戏数据">
+            <div class="stat">
+              <span>得分</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="stat">
+              <span>最高</span>
+              <strong id="best">0</strong>
+            </div>
+            <div class="stat">
+              <span>关卡</span>
+              <strong id="level">1</strong>
+            </div>
+            <div class="stat">
+              <span>连击</span>
+              <strong id="combo">x1</strong>
+            </div>
+            <div class="stat">
+              <span>护盾</span>
+              <strong id="shield">0</strong>
+            </div>
+            <div class="stat">
+              <span>冲击波</span>
+              <strong id="wave">0</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="stage-wrap">
+          <canvas id="game" width="640" height="640" aria-label="贪吃蛇画布"></canvas>
+          <div class="overlay is-visible" id="overlay">
+            <div class="overlay-panel">
+              <p id="overlay-kicker">准备开始</p>
+              <h2 id="overlay-title">吃掉发光果实</h2>
+              <button class="primary" id="start-btn" type="button">开始游戏</button>
+            </div>
+          </div>
+        </div>
+
+        <footer class="controls">
+          <div class="control-row">
+            <button class="icon-btn" id="pause-btn" type="button" aria-label="暂停或继续" title="暂停或继续">
+              <span aria-hidden="true">Ⅱ</span>
+            </button>
+            <button class="icon-btn" id="restart-btn" type="button" aria-label="重新开始" title="重新开始">
+              <span aria-hidden="true">↻</span>
+            </button>
+            <label class="speed">
+              <span>速度</span>
+              <select id="speed">
+                <option value="190">佛系</option>
+                <option value="150" selected>轻松</option>
+                <option value="110">标准</option>
+                <option value="78">极速</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="touch-pad" aria-label="触屏方向控制">
+            <button type="button" data-dir="up" aria-label="向上">▲</button>
+            <button type="button" data-dir="left" aria-label="向左">◀</button>
+            <button type="button" data-dir="down" aria-label="向下">▼</button>
+            <button type="button" data-dir="right" aria-label="向右">▶</button>
+          </div>
+
+          <aside class="guide" aria-label="特殊机制说明">
+            <h2>机制</h2>
+            <p><span class="legend portal"></span>穿过边框后从另一边出现</p>
+            <p><span class="legend normal"></span>普通果，增加长度和得分</p>
+            <p><span class="legend gold"></span>高分，限时闪烁</p>
+            <p><span class="legend ice"></span>短时间减速</p>
+            <p><span class="legend lightning"></span>加速并双倍得分</p>
+            <p><span class="legend shield"></span>抵消自咬、障碍或追击者一次</p>
+            <p><span class="legend reverse"></span>方向键短暂反转</p>
+            <p><span class="legend phase"></span>短时间无视身体和障碍</p>
+            <p><span class="legend wave"></span>头像果给 1 次，按 Ctrl 清障</p>
+            <p><span class="legend avatar"><img src="special.png" alt="" /></span>头像果：高分、护盾、双倍、冲击波</p>
+            <p><span class="legend level"></span>每 9 个普通果升级</p>
+            <p><span class="legend boss"></span>第 5 关开始追击蛇头</p>
+          </aside>
+        </footer>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
